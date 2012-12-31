@@ -28,19 +28,19 @@ if ($user) {
 }
 
 // Login or logout url will be needed depending on current user state.
-$params1 = array(
+$login_params = array(
   'scope' => 'email',
-  'redirect_uri' => 'index.php?id='.$_SESSION['id']
+  'redirect_uri' => 'http://localhost/iwall/index.php?id='.$_SESSION['id']
 );
 
-$params2 = array( 'next' => 'login.php' );
+$logout_params = array( 'next' => 'http://localhost/iwall/login.php' );
 
 if ($user) {
-    $logoutUrl = $facebook->getLogoutUrl();
+    $logoutUrl = $facebook->getLogoutUrl($logout_params);
     $_SESSION['loggedIn']=true;
-    //header('location: index.php?id='.$_SESSION['id']);
+    header('location: index.php?id='.$_SESSION['id']);
 } else {
-    $loginUrl = $facebook->getLoginUrl();
+    $loginUrl = $facebook->getLoginUrl($login_params);
 }
 
 
@@ -91,5 +91,7 @@ if ($user) {
         <?php else: ?>
             <strong><em>You are not Connected.</em></strong>
         <?php endif ?>
+            
+     <script type="text/javascript"> if (window.location.hash == '#_=_')window.location.hash = '';</script>
     </body>
 </html>

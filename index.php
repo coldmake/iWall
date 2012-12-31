@@ -15,7 +15,7 @@ if ($user) {
     $logoutUrl = $facebook->getLogoutUrl();
 }
 
-if ($user['name']);
+//if ($user['name']);
 
 if (isset($_GET['id']))
     $_SESSION['id'] = $_GET['id'];
