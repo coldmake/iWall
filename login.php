@@ -28,14 +28,22 @@ if ($user) {
 }
 
 // Login or logout url will be needed depending on current user state.
+$params1 = array(
+  'scope' => 'email',
+  'redirect_uri' => 'index.php?id='.$_SESSION['id']
+);
+
+$params2 = array( 'next' => 'login.php' );
+
 if ($user) {
     $logoutUrl = $facebook->getLogoutUrl();
+    $_SESSION['loggedIn']=true;
+    //header('location: index.php?id='.$_SESSION['id']);
 } else {
     $loginUrl = $facebook->getLoginUrl();
 }
 
-// This call will always work since we are fetching public data.
-$naitik = $facebook->api('/naitik');
+
 ?>
 <!doctype html>
 <html>
@@ -83,9 +91,5 @@ $naitik = $facebook->api('/naitik');
         <?php else: ?>
             <strong><em>You are not Connected.</em></strong>
         <?php endif ?>
-
-        <h3>Public profile of Naitik</h3>
-        <img src="https://graph.facebook.com/naitik/picture">
-        <?php echo $naitik['name']; die;?>
     </body>
 </html>
