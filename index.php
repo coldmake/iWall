@@ -37,7 +37,7 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] != true) {
     </head>
     <body>
         <?php
-        echo 'index';
+        echo '<img src="11.jpg"/>';
         ?>
         <?php if ($user): ?>
             <a href="<?php echo $logoutUrl; ?>">Logout</a>

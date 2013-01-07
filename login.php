@@ -43,7 +43,9 @@ if ($user) {
     $loginUrl = $facebook->getLoginUrl($login_params);
 }
 
-
+//$queryInsert = "INSERT INTO customer (customer_authtype, customer_authid, customer_email, customer_name, coupon_id) 
+//    VALUES ('" . 'facebook' . "'," . $user . ",'" . $_POST['inputOp1'] . "','" . $_POST['inputOp2'] . "','" . $type1 . "','" . $type2 . "','" . $attributes . "'," . $attrAmount . "," . $_SESSION['user_id'] . ")";
+//mysqli_query($conn, $queryInsert) or die("Failed Query of " . $queryInsert);
 
 ?>
 <!doctype html>
@@ -76,7 +78,7 @@ if ($user) {
         <?php else: ?>
             <div>
                 Login using OAuth 2.0 handled by the PHP SDK:
-                <a href="<?php echo $loginUrl; ?>">Login with Facebook</a>
+                <a href="<?php echo $loginUrl; ?>"><img src="fb.png"/></a>
             </div>
         <?php endif ?>
 
