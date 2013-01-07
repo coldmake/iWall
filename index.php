@@ -39,12 +39,6 @@ if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] != true) {
         <?php
         echo '<img src="11.jpg"/>';
         ?>
-        <?php if ($user): ?>
-            <a href="<?php echo $logoutUrl; ?>">Logout</a>
-        <?php endif ?>
-        <?php
-        session_destroy();
-        ?>
     <script type="text/javascript"> if (window.location.hash == '#_=_')window.location.hash = '';</script>
    
     </body>

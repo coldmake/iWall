@@ -33,6 +33,8 @@ $login_params = array(
   'redirect_uri' => 'http://localhost/iwall/index.php?id='.$_SESSION['id']
 );
 
+$_SESSION['loggedIn'] = true;
+
 $logout_params = array( 'next' => 'http://localhost/iwall/login.php' );
 
 if ($user) {
@@ -71,30 +73,15 @@ if ($user) {
         </style>
     </head>
     <body>
-        <h1>php-sdk</h1>
 
         <?php if ($user): ?>
             <a href="<?php echo $logoutUrl; ?>">Logout</a>
         <?php else: ?>
             <div>
-                Login using OAuth 2.0 handled by the PHP SDK:
-                <a href="<?php echo $loginUrl; ?>"><img src="fb.png"/></a>
+                <a href="index.php?id=1"><img src="fb.png"/></a>
             </div>
         <?php endif ?>
-
-        <h3>PHP Session</h3>
-        <pre><?php print_r($_SESSION); ?></pre>
-
-        <?php if ($user): ?>
-            <h3>You</h3>
-            <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
-
-            <h3>Your User Object (/me)</h3>
-            <pre><?php print_r($user_profile); ?></pre>
-        <?php else: ?>
-            <strong><em>You are not Connected.</em></strong>
-        <?php endif ?>
-            
+      <?php        session_destroy(); ?>
      <script type="text/javascript"> if (window.location.hash == '#_=_')window.location.hash = '';</script>
     </body>
 </html>
