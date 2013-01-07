@@ -19,10 +19,7 @@ if ($user) {
 
 if (isset($_GET['id']))
     $_SESSION['id'] = $_GET['id'];
-if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] != true) {
-    header('location: login.php');
-    exit;
-}
+
 ?>
 <!DOCTYPE html>
 <html>
